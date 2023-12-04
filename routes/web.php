@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('home');
+Route::resource('/dish', App\Http\Controllers\DishesController::class);
