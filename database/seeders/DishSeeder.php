@@ -13,17 +13,17 @@ class DishSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('dishes')->insert([
-            'name' => 'steak',
-            'category_id' => 1,
-        ]);
-        DB::table('dishes')->insert([
-            'name' => 'pizza',
-            'category_id' => 1,
-        ]);
-        DB::table('dishes')->insert([
-            'name' => 'plasta',
-            'category_id' => 1,
-        ]);
+        // DB::table('dishes')->insert([
+        //     'name' => 'steak',
+        //     'category_id' => 1,
+        // ]);
+        // DB::table('dishes')->insert([
+        //     'name' => 'pizza',
+        //     'category_id' => 1,
+        // ]);
+        // DB::table('dishes')->insert([
+        //     'name' => 'plasta',
+        //     'category_id' => 1,
+        // ]);
     }
 }
