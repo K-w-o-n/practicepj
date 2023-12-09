@@ -36,7 +36,7 @@
                                         href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
                                         aria-selected="true">New Order</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item" id="custom-tabs-one-tab" role="tablist">
                                     <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
                                         href="#custom-tabs-one-profile" role="tab"
                                         aria-controls="custom-tabs-one-profile" aria-selected="false">Order Listings</a>
@@ -54,11 +54,10 @@
                                                 <div class="col-sm-3">
                                                     <div class="card">
                                                         <div class="card-body">
-                                                            <img src="{{ url('/images/' . $dish->image) }}" alt=""
-                                                                width="200px" height="200px"><br>
+                                                            <img src="{{ url('/images/' . $dish->image) }}"
+                                                                alt="" width="200px" height="200px"><br>
                                                             <label for="">{{ $dish->name }}</label><br>
-                                                            <input type="number" name="{{ $dish->id }}"
-                                                                >
+                                                            <input type="number" name="{{ $dish->id }}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -74,10 +73,36 @@
                                         </div>
                                         <input type="submit" value="Submit" class="btn btn-success">
                                     </form>
-                                    <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
-                                        aria-labelledby="custom-tabs-one-profile-tab">
+                                </div>
+                                <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+                                    aria-labelledby="custom-tabs-one-profile-tab">
 
-                                    </div>
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#ID</th>
+                                                <th>Dish Name</th>
+                                                <th>Table Number</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($orders as $order)
+                                                <tr>
+                                                    <td>{{ $order->id }}</td>
+                                                    <td>{{ $order->dish->name }}</td>
+                                                    <td>{{ $order->table_id }}</td>
+                                                    <td>{{ $status[$order->status] }}</td>
+                                                    <td>
+                                                        <div>
+                                                            <a href="/order/{{ $order->id }}/serve"class="btn btn-info">Serve</a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
